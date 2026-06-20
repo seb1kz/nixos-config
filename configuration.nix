@@ -103,7 +103,7 @@
   users.users."seb" = {
     isNormalUser = true;
     description = "seb";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -116,6 +116,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  #hyprland
+  programs.hyprland.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -125,6 +129,10 @@
     pkgs.discord
     kitty
     fastfetch
+    wofi
+    waybar
+    hyprpaper
+    pkgs.swaybg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -136,6 +144,7 @@
   # };
 
   # List services that you want to enable:
+    services.libinput.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
