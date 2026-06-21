@@ -1,0 +1,27 @@
+# na powiadomienia
+# Plik: ~/.config/mako/config
+
+# Gdzie pojawiają się powiadomienia
+anchor=top-right
+
+# Wygląd
+background-color=#2e3440
+text-color=#d8dee9
+border-color=#88c0d0
+border-size=2
+border-radius=10
+
+# Rozmiar i odstępy
+width=350
+height=120
+padding=10
+margin=10
+
+# Zachowanie
+default-timeout=5000  # 5 sekund
+max-visible=5
+sort=-time
+
+# Włącz ikony i formatowanie
+icons=true
+markup=true
