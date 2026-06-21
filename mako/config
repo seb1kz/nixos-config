@@ -1,4 +1,3 @@
-# na powiadomienia
 # Plik: ~/.config/mako/config
 
 # Gdzie pojawiają się powiadomienia
@@ -18,7 +17,7 @@ padding=10
 margin=10
 
 # Zachowanie
-default-timeout=5000  # 5 sekund
+default-timeout=5000
 max-visible=5
 sort=-time
 
