@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.silentSDDM.nixosModules.default
     ];
+
+  # 2. Włączenie i konfiguracja SilentSDDM
+  programs.silentSDDM = {
+    enable = true;
+    theme = "default";
+  };
 
   hardware.graphics.enable = true;
 
@@ -15,14 +22,24 @@
     modesetting.enable = true;
   };
 
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
   networking.networkmanager.enable = true;
 
+  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
+  # Select internationalisation properties.
   i18n.defaultLocale = "pl_PL.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -37,20 +54,27 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "pl";
     variant = "";
   };
 
+  # Configure console keymap
   console.keyMap = "pl2";
 
+  # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -62,6 +86,7 @@
     # jack.enable = true;
   };
 
+  # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -75,7 +100,9 @@
     ];
   };
 
+  # Install firefox.
   programs.firefox.enable = true;
+  programs.steam.enable = true;
 
   programs.zsh = {
   enable = true;
@@ -89,6 +116,7 @@
     };
   };
 
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -96,15 +124,16 @@
      wget
      fastfetch
      pkgs.alacritty
-     pkgs.steam
      pkgs.keepassxc
      pkgs.spotify
      pkgs.vscode
      pkgs.obsidian
      pkgs.obs-studio
      nerd-fonts.iosevka
+     pkgs.discord
+     pfetch
   ];
 
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "26.05";
 
 }
