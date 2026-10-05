@@ -10,7 +10,7 @@
   # 2. Włączenie i konfiguracja SilentSDDM
   programs.silentSDDM = {
     enable = true;
-    theme = "default";
+    theme = "nord";
   };
 
   hardware.graphics.enable = true;
