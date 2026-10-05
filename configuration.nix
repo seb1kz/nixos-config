@@ -1,3 +1,4 @@
+# -0,40 sens on plasma
 { config, pkgs, inputs, ... }:
 
 {
