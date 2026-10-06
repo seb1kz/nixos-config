@@ -1,1 +1,16 @@
+# Tryb uruchamiania (drun = menu aplikacji)
+mode=drun
 
+# Ukrywa pasek wyszukiwania po naciśnięciu Esc
+key_exit=Escape
+
+# Pokaż ikony obok aplikacji
+show=drun
+insensitive=true       # Wyszukiwanie ignoruje wielkość liter
+prompt=Szukaj...       # Tekst w polu wyszukiwania
+width=500              # Szerokość okna w pikselach (lub np. 30%)
+height=400             # Wysokość okna
+location=center        # Położenie okna na ekranie
+allow_images=true      # Wyświetlanie ikon aplikacji
+image_size=28          # Rozmiar ikon
+matching=contains      # Dopasowywanie po wpisaniu fragmentu nazwy
