@@ -2,12 +2,12 @@
     font-family: "Iosevka Nerd Font", monospace;
     font-weight: 800;
     font-size: 13px;
-    color: #E2F1F1;
+    color: #E8F8F0;
 }
 
 window#waybar {
-    background: rgba(13, 23, 28, 0.99);
-    border: 1px solid #1F424C;
+    background: rgba(10, 26, 18, 0.98);
+    border: 1px solid #1B4D3E;
     border-radius: 10px;
     margin: 6px 8px;
     padding: 0;
@@ -38,23 +38,23 @@ window#waybar {
     margin: 4px 1px;
     border-radius: 50%;
     background: transparent;
-    color: #38606B;
+    color: #2D6A4F;
     font-size: 5px;
 }
 
 #workspaces button.active {
-    color: #4DF0D1;
-    background: #18333D;
+    color: #52B788;
+    background: #1B4332;
 }
 
 #workspaces button:hover {
-    background: #18333D;
-    color: #72F2DA;
+    background: #1B4332;
+    color: #74C69D;
 }
 
 #workspaces button.urgent {
-    background: #2D6A78;
-    color: #E2F1F1;
+    background: #40916C;
+    color: #D8F3DC;
     border-radius: 4px;
 }
 
@@ -63,20 +63,20 @@ window#waybar {
 }
 
 #custom-lock {
-    color: #E2F1F1;
+    color: #E8F8F0;
 }
 
 #custom-lock:hover {
-    color: #4DF0D1;
+    color: #52B788;
 }
 
 tooltip {
-    background: #0D171C;
-    border: 1px solid #234E5A;
+    background: #0A1A12;
+    border: 1px solid #2D6A4F;
     border-radius: 8px;
 }
 
 tooltip label {
-    color: #B2E2DF;
+    color: #D8F3DC;
     font-size: 11px;
 }
