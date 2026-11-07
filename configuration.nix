@@ -108,6 +108,7 @@
      pkgs.obs-studio
      pkgs.discord
      pkgs.brave
+     pkgs.jetbrains-mono
      pkgs.osu-lazer
      pfetch
      htop
