@@ -15,11 +15,6 @@
     wayland.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -29,17 +24,14 @@
     modesetting.enable = true;
   };
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "pl_PL.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -54,27 +46,20 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
 
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "pl";
     variant = "";
   };
 
-  # Configure console keymap
   console.keyMap = "pl2";
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
+  services.flatpak.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -82,26 +67,19 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."seb" = {
+  users.users."sebastian" = {
     isNormalUser = true;
-    description = "seb";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "sebastian";
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
 
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
   programs.steam.enable = true;
 
   programs.zsh = {
@@ -116,27 +94,23 @@
     };
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
      vim
      wget
-     fastfetch
      pkgs.alacritty
+     pkgs.librewolf
      pkgs.keepassxc
+     pkgs.prismlauncher
      pkgs.spotify
-     pkgs.vscode
      pkgs.obsidian
      pkgs.obs-studio
-     nerd-fonts.iosevka
      pkgs.discord
+     pkgs.brave
+     pkgs.osu-lazer
      pfetch
      htop
-     pkgs.wofi
-     pkgs.waybar
-     pkgs.hyprpaper
-     pkgs.swaybg
   ];
 
   system.stateVersion = "26.05";
