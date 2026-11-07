@@ -1,9 +1,42 @@
 [font]
-size = 10.0
+size = 13.0
 
 [font.normal]
-family = "Iosevka Nerd Font"
+family = "JetBrainsMono Nerd Font"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
 
 [window]
-opacity = 0.85
-padding = { x = 12, y = 12 }
+opacity = 0.70
+
+[colors.primary]
+background = '0x1c1c1c'
+foreground = '0xe0e0e0'
+
+[colors.cursor]
+text = '0x1c1c1c'
+cursor = '0xffffff'
+
+[colors.normal]
+black   = '0x181818'
+red     = '0x888888'
+green   = '0xa0a0a0'
+yellow  = '0xb0b0b0'
+blue    = '0x909090'
+magenta = '0xa8a8a8'
+cyan    = '0xb8b8b8'
+white   = '0xd8d8d8'
+
+[colors.bright]
+black   = '0x555555'
+red     = '0x999999'
+green   = '0xb0b0b0'
+yellow  = '0xc0c0c0'
+blue    = '0xaaaaaa'
+magenta = '0xb8b8b8'
+cyan    = '0xd0d0d0'
+white   = '0xffffff'
+
+[terminal.shell]
+program = "/run/current-system/sw/bin/zsh"
