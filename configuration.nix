@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.mangowm.nixosModules.mango
       inputs.silentSDDM.nixosModules.default
     ];
 
@@ -57,7 +58,7 @@
   };
 
   console.keyMap = "pl2";
-
+  services.power-profiles-daemon.enable = true;
   services.printing.enable = true;
   services.flatpak.enable = true;
   services.pulseaudio.enable = false;
@@ -79,8 +80,15 @@
     ];
   };
 
+  zramSwap.enable = true;
   programs.firefox.enable = false;
   programs.steam.enable = true;
+  programs.mango.enable = true;
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk21;
+  };
 
   programs.zsh = {
   enable = true;
@@ -107,11 +115,12 @@
      pkgs.obsidian
      pkgs.obs-studio
      pkgs.discord
-     pkgs.brave
-     pkgs.jetbrains-mono
+     pkgs.chromium
      pkgs.osu-lazer
      pfetch
+     pkgs.gcc
      htop
+     openjdk21
   ];
 
   system.stateVersion = "26.05";
