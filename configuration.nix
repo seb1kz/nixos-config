@@ -7,7 +7,7 @@
       inputs.mangowm.nixosModules.mango
       inputs.silentSDDM.nixosModules.default
     ];
-
+  # theme jaki uzywam Base2Tone Desert Dark
   # 2. Włączenie i konfiguracja SilentSDDM
   programs.silentSDDM = {
     enable = true;
