@@ -1,18 +1,16 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.mangowm.nixosModules.mango
-      inputs.silentSDDM.nixosModules.default
-    ];
-  # theme jaki uzywam Base2Tone Desert Dark
-  # 2. Włączenie i konfiguracja SilentSDDM
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.silentSDDM.nixosModules.default
+  ];
+
+  # Włączenie i konfiguracja SilentSDDM
   programs.silentSDDM = {
     enable = true;
-    theme = "nord";
-
+    theme = "catppuccin-mocha";
     wayland.enable = true;
   };
 
@@ -49,7 +47,7 @@
 
   services.xserver.enable = false;
 
-  services.displayManager.sddm.enable = true;
+  # Usunięto ogólny sddm.enable, ponieważ obsługuje to silentSDDM / plasma6
   services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
@@ -73,11 +71,9 @@
   users.users."sebastian" = {
     isNormalUser = true;
     description = "sebastian";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "audio"];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-
-    ];
+    packages = with pkgs; [];
   };
 
   zramSwap.enable = true;
@@ -91,38 +87,43 @@
   };
 
   programs.zsh = {
-  enable = true;
-  autosuggestions.enable = true;
-  syntaxHighlighting.enable = true;
-
-  ohMyZsh = {
     enable = true;
-    theme = "robbyrussell";
-    plugins = [ "git" "docker" ];
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [ "git" "docker" ];
     };
   };
 
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-fonts.comic-shanns-mono
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
+  # Ujednolicony blok pakietów (bez zbędnych przedrostków pkgs. i duplikatów javy)
   environment.systemPackages = with pkgs; [
-     vim
-     wget
-     pkgs.alacritty
-     pkgs.librewolf
-     pkgs.keepassxc
-     pkgs.prismlauncher
-     pkgs.spotify
-     pkgs.obsidian
-     pkgs.obs-studio
-     pkgs.discord
-     pkgs.chromium
-     pkgs.osu-lazer
-     pfetch
-     pkgs.gcc
-     htop
-     openjdk21
+    vim
+    wget
+    pkgs.librewolf
+    pkgs.keepassxc
+    pkgs.prismlauncher
+    pkgs.spotify
+    pkgs.obsidian
+    pkgs.obs-studio
+    pkgs.discord
+    pkgs.chromium
+    pkgs.osu-lazer
+    pkgs.pfetch
+    pkgs.gcc
+    pkgs.htop
+    pkgs.gimp
+    pkgs.alacritty
   ];
 
   system.stateVersion = "26.05";
-
 }
