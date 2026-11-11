@@ -1,24 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.sddm-astronaut.nixosModules.default
   ];
-
-  # Włączenie i konfiguracja SilentSDDM
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "sddm-astronaut-theme";
-    wayland.enable = true;
-    extraPackages = [
-      inputs.sddm-astronaut.packages.${pkgs.system}.default
-    ];
-    themeConfig = {
-      ConfigFile = "/etc/sddm/theme.conf";
-    };
-  };
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -53,6 +39,10 @@
   services.xserver.enable = false;
 
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   services.xserver.xkb = {
     layout = "pl";
@@ -96,7 +86,7 @@
 
     ohMyZsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "cloud";
       plugins = [ "git" "docker" ];
     };
   };
