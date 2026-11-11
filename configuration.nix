@@ -77,9 +77,8 @@
   };
 
   zramSwap.enable = true;
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
   programs.steam.enable = true;
-  programs.mango.enable = true;
 
   programs.java = {
     enable = true;
@@ -116,7 +115,6 @@
     pkgs.obsidian
     pkgs.obs-studio
     pkgs.discord
-    pkgs.chromium
     pkgs.osu-lazer
     pkgs.pfetch
     pkgs.gcc
