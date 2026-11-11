@@ -37,7 +37,7 @@
   };
 
   services.xserver = {
-    enable = true; 
+    enable = true;
   };
 
   services.desktopManager.plasma6.enable = true;
@@ -113,7 +113,7 @@
     pkgs.obs-studio
     pkgs.discord
     pkgs.osu-lazer
-    pkgs.pfetch
+    pkgs.fastfetch
     pkgs.gcc
     pkgs.htop
     pkgs.gimp
