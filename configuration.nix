@@ -8,7 +8,7 @@
   ];
 
   # Włączenie i konfiguracja SilentSDDM
-  programs.silentSDDM = {
+  services.displayManager.sddm = {
     enable = true;
     theme = "sddm-astronaut-theme";
     wayland.enable = true;
