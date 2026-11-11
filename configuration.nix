@@ -4,13 +4,13 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.silentSDDM.nixosModules.default
+    inputs.sddm-astronaut.nixosModules.default
   ];
 
   # Włączenie i konfiguracja SilentSDDM
   programs.silentSDDM = {
     enable = true;
-    theme = "catppuccin-mocha";
+    theme = "sddm-astronaut-theme";
     wayland.enable = true;
   };
 
