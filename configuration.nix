@@ -12,10 +12,12 @@
     enable = true;
     theme = "sddm-astronaut-theme";
     wayland.enable = true;
+    extraPackages = [
+      inputs.sddm-astronaut.packages.${pkgs.system}.default
+    ];
   };
 
   hardware.graphics.enable = true;
-
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
