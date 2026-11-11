@@ -49,7 +49,6 @@
 
   services.xserver.enable = false;
 
-  # Usunięto ogólny sddm.enable, ponieważ obsługuje to silentSDDM / plasma6
   services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
