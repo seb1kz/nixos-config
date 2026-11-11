@@ -38,6 +38,12 @@
 
   services.xserver = {
     enable = true;
+    windowManager.dwm = {
+    enable = true;
+      package = pkgs.dwm.overrideAttrs (old: {
+         src = /etc/nixos/dwm;
+      });
+    };
   };
 
   services.desktopManager.plasma6.enable = true;
@@ -103,21 +109,24 @@
 
   # Ujednolicony blok pakietów (bez zbędnych przedrostków pkgs. i duplikatów javy)
   environment.systemPackages = with pkgs; [
+    pkgs.gcc
+    git
     vim
     wget
     pkgs.librewolf
     pkgs.keepassxc
     pkgs.prismlauncher
-    pkgs.spotify
     pkgs.obsidian
     pkgs.obs-studio
-    pkgs.discord
     pkgs.osu-lazer
     pkgs.fastfetch
     pkgs.gcc
     pkgs.htop
     pkgs.gimp
     pkgs.alacritty
+    (pkgs.slstatus.overrideAttrs (old: {
+     src = /etc/nixos/slstatus;
+    }))
   ];
 
   system.stateVersion = "26.05";
