@@ -15,6 +15,9 @@
     extraPackages = [
       inputs.sddm-astronaut.packages.${pkgs.system}.default
     ];
+    themeConfig = {
+      ConfigFile = "/etc/sddm/theme.conf";
+    };
   };
 
   hardware.graphics.enable = true;
